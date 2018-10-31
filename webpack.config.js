@@ -32,12 +32,8 @@ module.exports={
           }
         }]
       },
-      // {
-      //   test:/\.css$/,
-      //   use:['style-loader','css-loader'] //解析顺序重后往前
-      // },
       {
-        test:/\.css$/,
+        test:/\.less$/,
         use:[
           'style-loader',
           {
@@ -47,25 +43,22 @@ module.exports={
               //path:文件夹名，name:文件名，local:定义的class名
               localIdentName:'[path][name]_[local]_[hash:base64:8]'
             }
-          }
+          },
+          "less-loader" 
         ],
         exclude:[//排除不需要模块化的文件
           path.resolve(__dirname,'node_modules'),
           path.resolve(__dirname,'node_modules'),
-        ] 
+        ]
       },
       {
-        test:/\.css$/,
-        use:['style-loader','css-loader'],
+        test:/\.less$/,
+        use:['style-loader','css-loader','less-loader'],
         include:[//不需要模块化的文件
           path.resolve(__dirname,'node_modules'),
           path.resolve(__dirname,'node_modules'),
         ]
       },
-      // {
-      //   test:/\.(jpg|png|gif|jpeg)/,
-      //   use:['file-loader']
-      // },
       {
         test:/\.(jpg|png|gif|jpeg)/,
         use:[{
@@ -79,3 +72,8 @@ module.exports={
     ]
   }
 }
+/**less模块化
+ * less和less-loader
+ * sass模块化
+ * sass-loader和node-sass
+ */
